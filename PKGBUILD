@@ -12,5 +12,9 @@ md5sums=('6867f4940019979fe8c2738596fbf262')
 
 package() {
   cd "$srcdir/OleFileIO_PL-${pkgver}"
-  python2 setup.py build install --root="${pkgdir}"
+  python2 setup.py build install --root="${pkgdir}" --optimize=1
+  install -D -m644 LICENSE.txt \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -D -m644 README.txt "$pkgdir/usr/share/doc/$pkgname/README.txt"
+  install -D -m644 README.html "$pkgdir/usr/share/doc/$pkgname/README.html"
 }
